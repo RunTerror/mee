@@ -1,22 +1,20 @@
 "use client";
 
+import { useState } from "react";
 import styles from "./page.module.css";
 import Image from "next/image";
-
-const screenshots = [
-  { src: "/thine/o1.PNG", caption: "Onboarding Flow" },
-  { src: "/thine/o2.PNG", caption: "Personalization" },
-  { src: "/thine/o3.PNG", caption: "Setup Complete" },
-  { src: "/thine/home.PNG", caption: "Home Screen" },
-  { src: "/thine/scratch-pad.PNG", caption: "Scratch Pad" },
-  { src: "/thine/chat-1.PNG", caption: "Chat Interface" },
-  { src: "/thine/chat-2.PNG", caption: "Conversation" },
-  { src: "/thine/voice-chat.PNG", caption: "Voice Chat" },
-];
+import ImageLightbox from "@/components/ImageLightbox";
 
 export default function ThinePage() {
+  const [lightboxImages, setLightboxImages] = useState<{ src: string; alt: string }[] | null>(null);
+
+  const openLightbox = (images: { src: string; alt: string }[]) => setLightboxImages(images);
+  const closeLightbox = () => setLightboxImages(null);
+
   return (
     <div className={styles.page}>
+      {lightboxImages && <ImageLightbox images={lightboxImages} onClose={closeLightbox} />}
+
       {/* Left Sidebar - Fixed */}
       <aside className={styles.sidebar}>
         <header className={styles.sidebarHeader}>
@@ -105,7 +103,11 @@ export default function ThinePage() {
                 <li className={styles.featureListItem}><strong>No Forms:</strong> Thine searches the web for your digital footprint instead of asking boring questions.</li>
                 <li className={styles.featureListItem}><strong>Instant &quot;Wow&quot;:</strong> Users are immediately amazed when the app accurately reveals their life and interests right on the first screen.</li>
               </ul>
-              <div className={styles.featureImages}>
+              <div className={styles.featureImages} onClick={() => openLightbox([
+                { src: "/thine/o1.PNG", alt: "Onboarding 1" },
+                { src: "/thine/o2.PNG", alt: "Onboarding 2" },
+                { src: "/thine/o3.PNG", alt: "Onboarding 3" },
+              ])}>
                 <div className={styles.phoneFrame}>
                   <Image src="/thine/o1.PNG" alt="Onboarding 1" fill priority className={styles.phoneImage} />
                 </div>
@@ -124,7 +126,10 @@ export default function ThinePage() {
                 <li className={styles.featureListItem}><strong>Automatic Summarization:</strong> The Scratchpad intelligently summarizes everything that happened in your day.</li>
                 <li className={styles.featureListItem}><strong>Personal Hub:</strong> Gives you a clean, timeline-based view of thoughts, activities, and conversations for easy review.</li>
               </ul>
-              <div className={styles.featureImages}>
+              <div className={styles.featureImages} onClick={() => openLightbox([
+                { src: "/thine/home.PNG", alt: "Home Screen" },
+                { src: "/thine/scratch-pad.PNG", alt: "Scratch Pad" },
+              ])}>
                 <div className={styles.phoneFrame}>
                   <Image src="/thine/home.PNG" alt="Home Screen" fill className={styles.phoneImage} />
                 </div>
@@ -140,7 +145,10 @@ export default function ThinePage() {
                 <li className={styles.featureListItem}><strong>Ongoing Context:</strong> It remembers what you talked about yesterday, making interactions feel continuous.</li>
                 <li className={styles.featureListItem}><strong>Text Chat:</strong> Talk with Thine just like you would text a friend rather than a transactional assistant.</li>
               </ul>
-              <div className={styles.featureImages}>
+              <div className={styles.featureImages} onClick={() => openLightbox([
+                { src: "/thine/chat-1.PNG", alt: "Chat 1" },
+                { src: "/thine/chat-2.PNG", alt: "Chat 2" },
+              ])}>
                 <div className={styles.phoneFrame}>
                   <Image src="/thine/chat-1.PNG" alt="Chat 1" fill className={styles.phoneImage} />
                 </div>
@@ -156,7 +164,9 @@ export default function ThinePage() {
                 <li className={styles.featureListItem}><strong>Natural Back-and-Forth:</strong> Talk naturally in real-time with an AI that listens while it speaks.</li>
                 <li className={styles.featureListItem}><strong>On-Device Interruption:</strong> A local model detects when you speak and instantly stops the AI&apos;s audio, letting you naturally jump in.</li>
               </ul>
-              <div className={styles.featureImages}>
+              <div className={styles.featureImages} onClick={() => openLightbox([
+                { src: "/thine/voice-chat.PNG", alt: "Voice Chat" },
+              ])}>
                 <div className={styles.phoneFrame}>
                   <Image src="/thine/voice-chat.PNG" alt="Voice Chat" fill className={styles.phoneImage} />
                 </div>
@@ -168,7 +178,10 @@ export default function ThinePage() {
                 <li className={styles.featureListItem}><strong>Lock Screen Control:</strong> Uses iOS Live Activities to give you full control over the background recording without opening the app.</li>
                 <li className={styles.featureListItem}><strong>On-Device Voice Isolation:</strong> An advanced fingerprinting engine actively isolates your voice from TV noise and background chat to ensure only your speech is captured.</li>
               </ul>
-              <div className={styles.featureImages}>
+              <div className={styles.featureImages} onClick={() => openLightbox([
+                { src: "/thine/fingerprint.PNG", alt: "Voice Fingerprint" },
+                { src: "/thine/live-activity.PNG", alt: "Live Activity" },
+              ])}>
                 <div className={styles.phoneFrame}>
                   <Image src="/thine/fingerprint.PNG" alt="Voice Fingerprint" fill className={styles.phoneImage} />
                 </div>

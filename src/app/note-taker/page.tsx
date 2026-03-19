@@ -1,7 +1,9 @@
 "use client";
 
+import { useState } from "react";
 import styles from "./page.module.css";
 import Image from "next/image";
+import ImageLightbox from "@/components/ImageLightbox";
 
 const AppleIcon = () => (
   <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
@@ -16,8 +18,15 @@ const PlayStoreIcon = () => (
 );
 
 export default function NotesAIPage() {
+  const [lightboxImages, setLightboxImages] = useState<{ src: string; alt: string }[] | null>(null);
+
+  const openLightbox = (images: { src: string; alt: string }[]) => setLightboxImages(images);
+  const closeLightbox = () => setLightboxImages(null);
+
   return (
     <div className={styles.page}>
+      {lightboxImages && <ImageLightbox images={lightboxImages} onClose={closeLightbox} />}
+
       {/* Left Sidebar - Fixed */}
       <aside className={styles.sidebar}>
         <header className={styles.sidebarHeader}>
@@ -98,7 +107,10 @@ export default function NotesAIPage() {
                 <li className={styles.featureListItem}><strong>Clean Hub:</strong> See your latest notes and summaries right when you open the app.</li>
                 <li className={styles.featureListItem}><strong>Simple Folders:</strong> Group your thoughts into projects without overthinking it.</li>
               </ul>
-              <div className={styles.featureImages}>
+              <div className={styles.featureImages} onClick={() => openLightbox([
+                { src: "/note-taker/home.jpeg", alt: "Home" },
+                { src: "/note-taker/home-1.jpeg", alt: "Dashboard" },
+              ])}>
                 <div className={styles.phoneFrame}>
                   <Image src="/note-taker/home.jpeg" alt="Home" fill priority className={styles.phoneImage} />
                 </div>
@@ -114,7 +126,9 @@ export default function NotesAIPage() {
                 <li className={styles.featureListItem}><strong>Any Format:</strong> Start a voice note, snap a picture, share a file, or just type.</li>
                 <li className={styles.featureListItem}><strong>Instant Processing:</strong> Everything is transcribed and turned into text on the spot.</li>
               </ul>
-              <div className={styles.featureImages}>
+              <div className={styles.featureImages} onClick={() => openLightbox([
+                { src: "/note-taker/audio.jpeg", alt: "Multimodal Capture" },
+              ])}>
                 <div className={styles.phoneFrame}>
                   <Image src="/note-taker/audio.jpeg" alt="Multimodal Capture" fill className={styles.phoneImage} />
                 </div>
@@ -127,7 +141,10 @@ export default function NotesAIPage() {
                 <li className={styles.featureListItem}><strong>Interactive Chat:</strong> Ask questions and get answers based entirely on the stuff you&apos;ve saved.</li>
                 <li className={styles.featureListItem}><strong>Automated Insights:</strong> The AI automatically cleans up your rambling voice notes into neat summaries and action items.</li>
               </ul>
-              <div className={styles.featureImages}>
+              <div className={styles.featureImages} onClick={() => openLightbox([
+                { src: "/note-taker/summary.jpeg", alt: "AI Summary" },
+                { src: "/note-taker/note.jpeg", alt: "Detailed Note" },
+              ])}>
                 <div className={styles.phoneFrame}>
                   <Image src="/note-taker/summary.jpeg" alt="AI Summary" fill className={styles.phoneImage} />
                 </div>
@@ -143,7 +160,10 @@ export default function NotesAIPage() {
                 <li className={styles.featureListItem}><strong>Easy Export:</strong> Send your summaries straight to iMessage, Mail, or other apps in one tap.</li>
                 <li className={styles.featureListItem}><strong>Profile Settings:</strong> A straightforward way to manage your account and AI preferences.</li>
               </ul>
-              <div className={styles.featureImages}>
+              <div className={styles.featureImages} onClick={() => openLightbox([
+                { src: "/note-taker/share.jpeg", alt: "Sharing" },
+                { src: "/note-taker/profile.jpeg", alt: "Profile" },
+              ])}>
                 <div className={styles.phoneFrame}>
                   <Image src="/note-taker/share.jpeg" alt="Sharing" fill className={styles.phoneImage} />
                 </div>

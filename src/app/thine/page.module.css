@@ -243,6 +243,10 @@
   object-fit: cover;
 }
 
+.featureImages {
+  cursor: pointer;
+}
+
 /* Tech Grid */
 .techGrid {
   display: grid;

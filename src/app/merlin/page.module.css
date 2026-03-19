@@ -250,6 +250,10 @@
   object-fit: cover;
 }
 
+.featureImages {
+  cursor: pointer;
+}
+
 .widgetFrame {
   position: relative;
   flex-shrink: 0;

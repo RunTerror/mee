@@ -1,7 +1,9 @@
 "use client";
 
+import { useState } from "react";
 import styles from "./page.module.css";
 import Image from "next/image";
+import ImageLightbox from "@/components/ImageLightbox";
 
 const AppleIcon = () => (
   <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
@@ -16,8 +18,15 @@ const PlayStoreIcon = () => (
 );
 
 export default function MerlinPage() {
+  const [lightboxImages, setLightboxImages] = useState<{ src: string; alt: string }[] | null>(null);
+
+  const openLightbox = (images: { src: string; alt: string }[]) => setLightboxImages(images);
+  const closeLightbox = () => setLightboxImages(null);
+
   return (
     <div className={styles.page}>
+      {lightboxImages && <ImageLightbox images={lightboxImages} onClose={closeLightbox} />}
+
       {/* Left Sidebar - Fixed */}
       <aside className={styles.sidebar}>
         <header className={styles.sidebarHeader}>
@@ -100,7 +109,9 @@ export default function MerlinPage() {
                 <li className={styles.featureListItem}><strong>Distraction-Free:</strong> A minimal login experience via Email, Google, and Apple sign-in.</li>
                 <li className={styles.featureListItem}><strong>Instant Access:</strong> No unnecessary steps—users jump into the app in seconds and start chatting immediately.</li>
               </ul>
-              <div className={styles.featureImages}>
+              <div className={styles.featureImages} onClick={() => openLightbox([
+                { src: "/merlin/auth.png", alt: "Authentication" },
+              ])}>
                 <div className={styles.phoneFrame}>
                   <Image src="/merlin/auth.png" alt="Authentication" fill priority className={styles.phoneImage} />
                 </div>
@@ -113,7 +124,10 @@ export default function MerlinPage() {
                 <li className={styles.featureListItem}><strong>Quick Actions:</strong> The home screen surfaces tools like Create Image, Scan &amp; Solve, and Web Search immediately.</li>
                 <li className={styles.featureListItem}><strong>Zero Navigation:</strong> One tap gets you exactly to the right tool without digging through complex menus.</li>
               </ul>
-              <div className={styles.featureImages}>
+              <div className={styles.featureImages} onClick={() => openLightbox([
+                { src: "/merlin/home.png", alt: "Home Screen" },
+                { src: "/merlin/drawer.png", alt: "Navigation Drawer" },
+              ])}>
                 <div className={styles.phoneFrame}>
                   <Image src="/merlin/home.png" alt="Home Screen" fill className={styles.phoneImage} />
                 </div>
@@ -129,7 +143,10 @@ export default function MerlinPage() {
                 <li className={styles.featureListItem}><strong>Seamless Switching:</strong> Change between Claude, GPT, and Gemini models mid-conversation without losing context.</li>
                 <li className={styles.featureListItem}><strong>Smart Categorization:</strong> A custom picker categorizes brains by capability (Reasoning, Writing, etc.) to help users choose right.</li>
               </ul>
-              <div className={styles.featureImages}>
+              <div className={styles.featureImages} onClick={() => openLightbox([
+                { src: "/merlin/models.png", alt: "AI Models" },
+                { src: "/merlin/chat.png", alt: "Chat Interface" },
+              ])}>
                 <div className={styles.phoneFrame}>
                   <Image src="/merlin/models.png" alt="AI Models" fill className={styles.phoneImage} />
                 </div>
@@ -145,7 +162,10 @@ export default function MerlinPage() {
                 <li className={styles.featureListItem}><strong>Personal Knowledge Base:</strong> Pin important conversations, organize chats into folders, and search through your entire history.</li>
                 <li className={styles.featureListItem}><strong>Smart Organization:</strong> Specifically designed the history system to feel intuitive and grow smarter alongside the user.</li>
               </ul>
-              <div className={styles.featureImages}>
+              <div className={styles.featureImages} onClick={() => openLightbox([
+                { src: "/merlin/history.png", alt: "Chat History" },
+                { src: "/merlin/settings.png", alt: "Settings" },
+              ])}>
                 <div className={styles.phoneFrame}>
                   <Image src="/merlin/history.png" alt="Chat History" fill className={styles.phoneImage} />
                 </div>
@@ -161,7 +181,9 @@ export default function MerlinPage() {
                 <li className={styles.featureListItem}><strong>Instant Shortcuts:</strong> iOS home screen widgets grant immediate access to chat, photo scanning, and voice recording.</li>
                 <li className={styles.featureListItem}><strong>Zero-Tap Access:</strong> Connect to powerful AI tools directly from your home screen without ever opening the app itself.</li>
               </ul>
-              <div className={styles.featureImages}>
+              <div className={styles.featureImages} onClick={() => openLightbox([
+                { src: "/merlin/home-widget.png", alt: "Home Widget" },
+              ])}>
                 <div className={styles.widgetFrame}>
                   <Image src="/merlin/home-widget.png" alt="Home Widget" fill className={styles.widgetImage} />
                 </div>
