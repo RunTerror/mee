@@ -21,7 +21,7 @@ export default function MerlinPage() {
       {/* Left Sidebar - Fixed */}
       <aside className={styles.sidebar}>
         <header className={styles.sidebarHeader}>
-          <a href="/" className={styles.name}>abhishek bansal</a>
+          <a href="/" className={styles.name}>Abhishek Bansal</a>
           <nav className={styles.nav}>
             <a href="https://apps.apple.com/us/app/merlin-ai-ai-chat-assistant/id6453692447" target="_blank" rel="noopener noreferrer" aria-label="App Store" className={styles.navIcon}><AppleIcon /></a>
             <a href="https://play.google.com/store/apps/details?id=com.foyer.merlin&hl=en_IN" target="_blank" rel="noopener noreferrer" aria-label="Play Store" className={styles.navIcon}><PlayStoreIcon /></a>
@@ -65,7 +65,7 @@ export default function MerlinPage() {
         </div>
 
         <footer className={styles.sidebarFooter}>
-          <span>abhishek bansal &copy; 2026</span>
+          <span>Abhishek Bansal &copy; 2026</span>
         </footer>
       </aside>
 
@@ -102,7 +102,7 @@ export default function MerlinPage() {
               </ul>
               <div className={styles.featureImages}>
                 <div className={styles.phoneFrame}>
-                  <Image src="/merlin/auth.png" alt="Authentication" fill className={styles.phoneImage} />
+                  <Image src="/merlin/auth.png" alt="Authentication" fill priority className={styles.phoneImage} />
                 </div>
               </div>
             </div>

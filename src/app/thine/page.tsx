@@ -20,7 +20,7 @@ export default function ThinePage() {
       {/* Left Sidebar - Fixed */}
       <aside className={styles.sidebar}>
         <header className={styles.sidebarHeader}>
-          <a href="/" className={styles.name}>abhishek bansal</a>
+          <a href="/" className={styles.name}>Abhishek Bansal</a>
           <nav className={styles.nav}>
             {/* <a href="#">resume</a> */}
             <a href="mailto:bansalabhishek7411@gmail.com">contact</a>
@@ -70,7 +70,7 @@ export default function ThinePage() {
         </div>
 
         <footer className={styles.sidebarFooter}>
-          <span>abhishek bansal &copy; 2026</span>
+          <span>Abhishek Bansal &copy; 2026</span>
         </footer>
       </aside>
 
@@ -107,13 +107,13 @@ export default function ThinePage() {
               </ul>
               <div className={styles.featureImages}>
                 <div className={styles.phoneFrame}>
-                  <Image src="/thine/o1.PNG" alt="Onboarding 1" fill className={styles.phoneImage} />
+                  <Image src="/thine/o1.PNG" alt="Onboarding 1" fill priority className={styles.phoneImage} />
                 </div>
                 <div className={styles.phoneFrame}>
-                  <Image src="/thine/o2.PNG" alt="Onboarding 2" fill className={styles.phoneImage} />
+                  <Image src="/thine/o2.PNG" alt="Onboarding 2" fill priority className={styles.phoneImage} />
                 </div>
                 <div className={styles.phoneFrame}>
-                  <Image src="/thine/o3.PNG" alt="Onboarding 3" fill className={styles.phoneImage} />
+                  <Image src="/thine/o3.PNG" alt="Onboarding 3" fill priority className={styles.phoneImage} />
                 </div>
               </div>
             </div>

@@ -129,6 +129,15 @@ function IconCard({ project, index }: { project: typeof projects[0]; index: numb
   const [isHovered, setIsHovered] = useState(false);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
+  // Preload all carousel images on mount so they're instant on hover
+  useEffect(() => {
+    if (!project.previewImages) return;
+    project.previewImages.forEach((src) => {
+      const img = new window.Image();
+      img.src = src;
+    });
+  }, [project.previewImages]);
+
   useEffect(() => {
     if (!isHovered || !project.previewImages) return;
 
@@ -179,6 +188,7 @@ function IconCard({ project, index }: { project: typeof projects[0]; index: numb
           alt={project.title}
           width={180}
           height={50}
+          priority
           className={`${styles.iconCardImage} ${isHovered && project.previewImages ? styles.iconHidden : ""}`}
           style={{ filter: project.invertIcon === false ? "none" : undefined, ...(project.iconStyle || {}) }}
         />
@@ -218,7 +228,7 @@ export default function Portfolio() {
       {/* Header */}
       <header className={styles.header}>
         <a href="/" className={styles.headerName}>
-          abhishek bansal
+          Abhishek Bansal
         </a>
         <nav className={styles.nav}>
           {/* <a href="#">resume</a> */}
@@ -285,7 +295,7 @@ export default function Portfolio() {
 
       {/* Footer */}
       <footer className={styles.footer} id="contact">
-        <span className={styles.footerName}>abhishek bansal © 2026</span>
+        <span className={styles.footerName}>Abhishek Bansal © 2026</span>
         <div className={styles.footerIcons}>
           <a
             href="https://x.com/apphishek"

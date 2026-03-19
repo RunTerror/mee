@@ -21,7 +21,7 @@ export default function NotesAIPage() {
       {/* Left Sidebar - Fixed */}
       <aside className={styles.sidebar}>
         <header className={styles.sidebarHeader}>
-          <a href="/" className={styles.name}>abhishek bansal</a>
+          <a href="/" className={styles.name}>Abhishek Bansal</a>
           <nav className={styles.nav}>
             <a href="https://apps.apple.com/us/app/ai-note-taker-audio-to-text/id6743072579" target="_blank" rel="noopener noreferrer" aria-label="App Store" className={styles.navIcon}><AppleIcon /></a>
             <a href="https://play.google.com/store/apps/details?id=com.foyer.notesai&hl=en_IN" target="_blank" rel="noopener noreferrer" aria-label="Play Store" className={styles.navIcon}><PlayStoreIcon /></a>
@@ -65,7 +65,7 @@ export default function NotesAIPage() {
         </div>
 
         <footer className={styles.sidebarFooter}>
-          <span>abhishek bansal &copy; 2026</span>
+          <span>Abhishek Bansal &copy; 2026</span>
         </footer>
       </aside>
 
@@ -100,10 +100,10 @@ export default function NotesAIPage() {
               </ul>
               <div className={styles.featureImages}>
                 <div className={styles.phoneFrame}>
-                  <Image src="/note-taker/home.jpeg" alt="Home" fill className={styles.phoneImage} />
+                  <Image src="/note-taker/home.jpeg" alt="Home" fill priority className={styles.phoneImage} />
                 </div>
                 <div className={styles.phoneFrame}>
-                  <Image src="/note-taker/home-1.jpeg" alt="Dashboard" fill className={styles.phoneImage} />
+                  <Image src="/note-taker/home-1.jpeg" alt="Dashboard" fill priority className={styles.phoneImage} />
                 </div>
               </div>
             </div>

@@ -16,7 +16,7 @@ const lato = Lato({
 });
 
 export const metadata: Metadata = {
-  title: "Your Name — Designer",
+  title: "Abhishek Bansal — Product Engineer",
   description: "Portfolio",
 };
 
