@@ -59,16 +59,8 @@ export default function MerlinPage() {
 
           <div className={styles.meta}>
             <div className={styles.metaItem}>
-              <span className={styles.metaLabel}>TIMELINE</span>
-              <span className={styles.metaValue}>2024 &ndash; 2025</span>
-            </div>
-            <div className={styles.metaItem}>
               <span className={styles.metaLabel}>PLATFORM</span>
               <span className={styles.metaValue}>iOS &amp; Android</span>
-            </div>
-            <div className={styles.metaItem}>
-              <span className={styles.metaLabel}>ROLE</span>
-              <span className={styles.metaValue}>Mobile Lead &bull; Flutter</span>
             </div>
           </div>
         </div>

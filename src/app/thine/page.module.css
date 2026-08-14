@@ -49,6 +49,20 @@
   opacity: 1;
 }
 
+.navIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.navIcon:hover {
+  background: rgba(255, 255, 255, 0.22);
+}
+
 .sidebarContent {
   flex: 1;
 }
@@ -105,7 +119,7 @@
 
 .meta {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: 1fr;
   gap: 24px;
 }
 
@@ -276,6 +290,13 @@
 }
 
 /* CTA Section */
+.ctaGroup {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
 .ctaSection {
   padding: 48px 0;
   text-align: center;

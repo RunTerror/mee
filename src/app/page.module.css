@@ -163,6 +163,70 @@
   gap: 16px;
 }
 
+/* ── Work apps mini-grid (left column) ────────────────────────────────────── */
+
+.workSection {
+  margin-top: 56px;
+}
+
+/* Left column can outgrow short viewports now that it holds the work grid;
+   sticky would pin it and clip the bottom, so let it scroll instead. */
+@media (max-height: 1100px) {
+  .left {
+    position: relative;
+  }
+}
+
+.workGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px 16px;
+}
+
+.miniCard {
+  margin-bottom: 0;
+}
+
+.miniCard .projectThumb {
+  aspect-ratio: 16 / 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.miniCard:hover .projectThumb {
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+}
+
+.miniIcon {
+  width: 68%;
+  height: 82%;
+  object-fit: contain;
+  opacity: 0.9;
+  transition: transform 0.3s ease;
+}
+
+.miniCard:hover .miniIcon {
+  transform: scale(1.06);
+}
+
+.miniCard .projectCaption {
+  padding: 12px 0 0;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+}
+
+.miniCard .projectTitle {
+  font-size: 13px;
+}
+
+.miniCard .projectTags {
+  font-size: 10px;
+  text-align: left;
+}
+
 @keyframes fadeInUp {
   from {
     opacity: 0;

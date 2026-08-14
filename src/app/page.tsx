@@ -88,7 +88,20 @@ const notesPreviewImages = [
   "/note-taker/share.jpeg",
 ];
 
-const projects = [
+type Project = {
+  type: "icon-card" | "plain";
+  title: string;
+  tags: string;
+  href: string;
+  bg?: string;
+  icon?: string;
+  previewImages?: string[];
+  invertIcon?: boolean;
+  iconStyle?: React.CSSProperties;
+  external?: boolean;
+};
+
+const projects: Project[] = [
   {
     type: "icon-card",
     icon: "/thine/thine-icon.svg",
@@ -123,9 +136,32 @@ const projects = [
   },
 ];
 
+// Personal projects — shown as a mini-grid in the left column.
+// Cards work two ways:
+//  • "plain"     → bg color + title/tags, optional centered icon (no assets needed)
+//  • "icon-card" → app icon + hover screenshot carousel (add files under /public/<app>/)
+const sideProjects: Project[] = [
+  {
+    type: "plain",
+    bg: "#e8d9c5",
+    icon: "/voice-chat/icon.svg",
+    title: "Voice Chat: Real-time Conversations",
+    tags: "FULL-STACK • 2026",
+    href: "/voice-chat",
+  },
+  {
+    type: "plain",
+    bg: "#d9e3d0",
+    icon: "/morphit/icon.svg",
+    title: "Morphit: 3D Shape Morphing",
+    tags: "FLUTTER • 2025",
+    href: "/morphit",
+  },
+];
+
 // ── Icon Card Component ──────────────────────────────────────────────────────
 
-function IconCard({ project, index }: { project: typeof projects[0]; index: number }) {
+function IconCard({ project, index }: { project: Project; index: number }) {
   const [isHovered, setIsHovered] = useState(false);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
@@ -220,6 +256,39 @@ function IconCard({ project, index }: { project: typeof projects[0]; index: numb
   );
 }
 
+function renderCard(p: Project, index: number, mini = false) {
+  if (p.type === "icon-card") {
+    return <IconCard key={p.title} project={p} index={index} />;
+  }
+  return (
+    <a
+      key={p.title}
+      href={p.href}
+      target={p.external ? "_blank" : undefined}
+      rel={p.external ? "noopener noreferrer" : undefined}
+      className={`${styles.projectCard} ${mini ? styles.miniCard : ""}`}
+      style={{ animationDelay: `${index * 0.1}s` }}
+    >
+      <div className={styles.projectThumb} style={p.bg ? { background: p.bg } : undefined}>
+        {p.icon && (
+          <Image
+            src={p.icon}
+            alt={p.title}
+            width={110}
+            height={110}
+            className={styles.miniIcon}
+            style={p.iconStyle}
+          />
+        )}
+      </div>
+      <div className={styles.projectCaption}>
+        <span className={styles.projectTitle}>{p.title}</span>
+        <span className={styles.projectTags}>{p.tags}</span>
+      </div>
+    </a>
+  );
+}
+
 // ── Page ──────────────────────────────────────────────────────────────────────
 
 export default function Portfolio() {
@@ -273,23 +342,19 @@ export default function Portfolio() {
               ))}
             </div>
           </div>
+
+          {/* Personal projects */}
+          <div className={styles.workSection}>
+            <p className={styles.infoLabel}>Projects</p>
+            <div className={styles.workGrid}>
+              {sideProjects.map((p, i) => renderCard(p, projects.length + i, true))}
+            </div>
+          </div>
         </div>
 
         {/* Right column — project cards */}
         <div className={styles.right}>
-          {projects.map((p, i) =>
-            p.type === "icon-card" ? (
-              <IconCard key={i} project={p} index={i} />
-            ) : (
-              <a key={i} href={p.href} className={styles.projectCard} style={{ animationDelay: `${i * 0.1}s` }}>
-                <div className={styles.projectThumb} style={{ background: p.bg }} />
-                <div className={styles.projectCaption}>
-                  <span className={styles.projectTitle}>{p.title}</span>
-                  <span className={styles.projectTags}>{p.tags}</span>
-                </div>
-              </a>
-            )
-          )}
+          {projects.map((p, i) => renderCard(p, i))}
         </div>
       </main>
 
