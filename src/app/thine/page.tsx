@@ -60,8 +60,16 @@ export default function ThinePage() {
 
           <div className={styles.meta}>
             <div className={styles.metaItem}>
+              <span className={styles.metaLabel}>TIMELINE</span>
+              <span className={styles.metaValue}>2025 - Present</span>
+            </div>
+            <div className={styles.metaItem}>
               <span className={styles.metaLabel}>PLATFORM</span>
               <span className={styles.metaValue}>iOS</span>
+            </div>
+            <div className={styles.metaItem}>
+              <span className={styles.metaLabel}>ROLE</span>
+              <span className={styles.metaValue}>Mobile Lead &bull; SwiftUI</span>
             </div>
           </div>
         </div>
