@@ -1,9 +1,8 @@
 .page {
   background: #f4f1eb;
-  height: 100vh;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
-  overflow: hidden;
 }
 
 /* ── Header ────────────────────────────────────────────────────────────────── */
@@ -39,47 +38,125 @@
   opacity: 0.45;
 }
 
-/* ── Main two-column grid ──────────────────────────────────────────────────── */
+/* ── Main: one vertical column of sections ───────────────────────────────── */
+
+/* Header, main and footer share one content width (1080px between the
+   13% gutters) so their edges line up on wide screens. */
+.header,
+.main,
+.footer {
+  width: 100%;
+  max-width: calc(1080px + 26%);
+  margin-left: auto;
+  margin-right: auto;
+}
 
 .main {
   flex: 1;
-  display: grid;
-  grid-template-columns: 1fr 0.85fr;
-  gap: 40px;
-  padding: 60px 13% 64px;
-  overflow-y: auto;
-  scrollbar-width: none;
-  -ms-overflow-style: none;
-}
-
-.main::-webkit-scrollbar {
-  display: none;
-}
-
-/* ── Left column ───────────────────────────────────────────────────────────── */
-
-.left {
+  padding: 40px 13% 56px;
   display: flex;
   flex-direction: column;
-  position: sticky;
-  top: 0;
-  align-self: start;
+  gap: 56px;
+}
+
+.hero {
+  max-width: 720px;
 }
 
 .headline {
-  font-size: clamp(21px, 2.5vw, 37px);
+  font-size: clamp(24px, 3vw, 40px);
   font-weight: 400;
   line-height: 1.35;
   color: #1a1a1a;
-  margin-bottom: 60px;
   letter-spacing: -0.01em;
   word-spacing: -0.05em;
 }
 
+/* Section heading: label on the left, a hairline running to the edge */
+.sectionHeader {
+  display: flex;
+  align-items: baseline;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.sectionHeader::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: #1a1a1a;
+  opacity: 0.12;
+  align-self: center;
+}
+
+.sectionHeader .infoLabel {
+  margin-bottom: 0;
+}
+
+.sectionNote {
+  font-size: 11px;
+  font-weight: 300;
+  color: #1a1a1a;
+  opacity: 0.7;
+  white-space: nowrap;
+}
+
+/* Shipped: the first product spans the row, the rest pair up */
+.shippedGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px 20px;
+}
+
+.shippedGrid .iconCardThumb {
+  aspect-ratio: 16 / 10;
+}
+
+/* Same caption as the "Built in the open" cards: title over tags */
+.shippedGrid .projectCaption {
+  padding: 12px 0 0;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+}
+
+.shippedGrid .projectTitle {
+  font-size: 13px;
+}
+
+.shippedGrid .projectTags {
+  font-size: 10px;
+  text-align: left;
+}
+
+/* Built in the open: three across */
+.workGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px 20px;
+}
+
+/* Experience (three jobs across) and education share one row; the 3fr/1fr
+   split keeps every entry the same width as a card in the grid above. */
 .infoGrid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 72px;
+  grid-template-columns: 3fr 1fr;
+  gap: 20px;
+}
+
+.infoRow {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+/* In a column the year sits under the role instead of at the far right */
+.infoGrid .infoItem {
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 8px;
+  margin-bottom: 0;
 }
 
 .infoLabel {
@@ -153,34 +230,6 @@
   white-space: nowrap;
   flex-shrink: 0;
   padding-top: 1px;
-}
-
-/* ── Right column — project cards ─────────────────────────────────────────── */
-
-.right {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-
-/* ── Work apps mini-grid (left column) ────────────────────────────────────── */
-
-.workSection {
-  margin-top: 56px;
-}
-
-/* Left column can outgrow short viewports now that it holds the work grid;
-   sticky would pin it and clip the bottom, so let it scroll instead. */
-@media (max-height: 1100px) {
-  .left {
-    position: relative;
-  }
-}
-
-.workGrid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 20px 16px;
 }
 
 .miniCard {
@@ -715,18 +764,19 @@
   }
 
   .main {
-    grid-template-columns: 1fr;
     padding-left: 6%;
     padding-right: 6%;
     gap: 48px;
   }
 
-  .left {
-    position: relative;
+  .workGrid,
+  .shippedGrid {
+    grid-template-columns: 1fr 1fr;
   }
 
-  .headline {
-    margin-bottom: 40px;
+  .infoGrid {
+    grid-template-columns: 1fr;
+    gap: 40px;
   }
 }
 
@@ -743,9 +793,17 @@
     padding-right: 5%;
   }
 
-  .infoGrid {
+  .infoRow {
     grid-template-columns: 1fr;
-    gap: 32px;
+    gap: 22px;
+  }
+
+  .shippedGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .sectionNote {
+    display: none;
   }
 
   .headline {

@@ -136,11 +136,19 @@ const projects: Project[] = [
   },
 ];
 
-// Personal projects — shown as a mini-grid in the left column.
+// Personal projects — the "Built in the open" grid.
 // Cards work two ways:
 //  • "plain"     → bg color + title/tags, optional centered icon (no assets needed)
 //  • "icon-card" → app icon + hover screenshot carousel (add files under /public/<app>/)
 const sideProjects: Project[] = [
+  {
+    type: "plain",
+    bg: "#dcd9ec",
+    icon: "/steady/icon.svg",
+    title: "Steady: Jump-free Chat Scrolling",
+    tags: "SWIFT PACKAGE • 2026",
+    href: "/steady",
+  },
   {
     type: "plain",
     bg: "#e8d9c5",
@@ -305,18 +313,43 @@ export default function Portfolio() {
         </nav>
       </header>
 
-      {/* Main two-column grid */}
+      {/* Main: intro, then work, then background, top to bottom */}
       <main className={styles.main}>
-        {/* Left column */}
-        <div className={styles.left}>
+        <section className={styles.hero}>
           <h1 className={styles.headline}>
-            I make mobile apps, people don’t delete. Built to scale. Built to help.
+            I make mobile apps people don’t delete. Built to scale. Built to help.
           </h1>
+        </section>
 
-          <div className={styles.infoGrid}>
-            {/* Experience */}
-            <div>
-              <p className={styles.infoLabel}>Experience</p>
+        {/* Products shipped at work */}
+        <section>
+          <div className={styles.sectionHeader}>
+            <h2 className={styles.infoLabel}>Shipped</h2>
+            <span className={styles.sectionNote}>products in users’ hands</span>
+          </div>
+          <div className={styles.shippedGrid}>
+            {projects.map((p, i) => renderCard(p, i))}
+          </div>
+        </section>
+
+        {/* Personal projects */}
+        <section>
+          <div className={styles.sectionHeader}>
+            <h2 className={styles.infoLabel}>Built in the open</h2>
+            <span className={styles.sectionNote}>packages &amp; experiments</span>
+          </div>
+          <div className={styles.workGrid}>
+            {sideProjects.map((p, i) => renderCard(p, projects.length + i, true))}
+          </div>
+        </section>
+
+        {/* Experience and education */}
+        <section className={styles.infoGrid}>
+          <div>
+            <div className={styles.sectionHeader}>
+              <h2 className={styles.infoLabel}>Experience</h2>
+            </div>
+            <div className={styles.infoRow}>
               {experiences.map((e, i) => (
                 <div key={i} className={styles.infoItem}>
                   <div className={styles.infoItemLeft}>
@@ -327,35 +360,23 @@ export default function Portfolio() {
                 </div>
               ))}
             </div>
+          </div>
 
-            {/* Academics */}
-            <div>
-              <p className={styles.infoLabel}>Academics</p>
-              {academics.map((a, i) => (
-                <div key={i} className={styles.infoItem}>
-                  <div className={styles.infoItemLeft}>
-                    <span className={styles.academicName}>{a.org}</span>
-                    <span className={styles.orgRole}>{a.institution}</span>
-                  </div>
-                  <span className={styles.orgYear}>{a.year}</span>
+          <div>
+            <div className={styles.sectionHeader}>
+              <h2 className={styles.infoLabel}>Education</h2>
+            </div>
+            {academics.map((a, i) => (
+              <div key={i} className={styles.infoItem}>
+                <div className={styles.infoItemLeft}>
+                  <span className={styles.academicName}>{a.org}</span>
+                  <span className={styles.orgRole}>{a.institution}</span>
                 </div>
-              ))}
-            </div>
+                <span className={styles.orgYear}>{a.year}</span>
+              </div>
+            ))}
           </div>
-
-          {/* Personal projects */}
-          <div className={styles.workSection}>
-            <p className={styles.infoLabel}>Projects</p>
-            <div className={styles.workGrid}>
-              {sideProjects.map((p, i) => renderCard(p, projects.length + i, true))}
-            </div>
-          </div>
-        </div>
-
-        {/* Right column — project cards */}
-        <div className={styles.right}>
-          {projects.map((p, i) => renderCard(p, i))}
-        </div>
+        </section>
       </main>
 
       {/* Footer */}
