@@ -151,20 +151,29 @@ const sideProjects: Project[] = [
   },
   {
     type: "plain",
+    bg: "#ece3cf",
+    icon: "/typewriter/icon.png",
+    title: "Typewriter: Write Without Delete",
+    tags: "iOS APP • 2026",
+    href: "/typewriter",
+    iconStyle: { borderRadius: "22px" },
+  },
+  {
+    type: "plain",
     bg: "#e8d9c5",
     icon: "/voice-chat/icon.svg",
     title: "Voice Chat: Real-time Conversations",
     tags: "FULL-STACK • 2026",
     href: "/voice-chat",
   },
-  {
-    type: "plain",
-    bg: "#d9e3d0",
-    icon: "/morphit/icon.svg",
-    title: "Morphit: 3D Shape Morphing",
-    tags: "FLUTTER • 2025",
-    href: "/morphit",
-  },
+  // {
+  //   type: "plain",
+  //   bg: "#d9e3d0",
+  //   icon: "/morphit/icon.svg",
+  //   title: "Morphit: 3D Shape Morphing",
+  //   tags: "FLUTTER • 2025",
+  //   href: "/morphit",
+  // },
 ];
 
 // ── Icon Card Component ──────────────────────────────────────────────────────
