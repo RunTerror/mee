@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#4f6bff"/>
+      <stop offset="1" stop-color="#1c2580"/>
+    </linearGradient>
+    <linearGradient id="glass" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffffff" stop-opacity=".22"/>
+      <stop offset="1" stop-color="#ffffff" stop-opacity=".06"/>
+    </linearGradient>
+  </defs>
+  <rect x="100" y="100" width="824" height="824" rx="185" fill="url(#bg)"/>
+  <!-- handle, drawn first so the ring sits on top of it -->
+  <path d="M640 640 L770 770" stroke="#ffffff" stroke-width="92" stroke-linecap="round"/>
+  <!-- lens -->
+  <circle cx="465" cy="465" r="205" fill="url(#glass)" stroke="#ffffff" stroke-width="58"/>
+  <!-- request and response, seen through the lens -->
+  <g fill="none" stroke="#6ff5c8" stroke-width="36" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M375 420 H545 M505 380 L545 420 L505 460"/>
+    <path d="M555 515 H385 M425 475 L385 515 L425 555"/>
+  </g>
+</svg>

@@ -136,6 +136,33 @@ const projects: Project[] = [
   },
 ];
 
+// Work in progress — the "Building now" rows. Each is one wide card:
+// what it is and where it stands on the left, a screenshot on the right.
+type RunningProject = {
+  title: string;
+  blurb: string;
+  status: string;
+  tags: string;
+  href: string;
+  icon: string;
+  shot: string;
+  bg: string;
+};
+
+const runningProjects: RunningProject[] = [
+  {
+    title: "Loupe",
+    blurb:
+      "A network inspector for the iOS Simulator. See every request your app makes, then mock it, pause it or edit it on the way through.",
+    status: "v0.9 beta",
+    tags: "MAC APP • 2026",
+    href: "/loupe",
+    icon: "/loupe/icon.svg",
+    shot: "/loupe/hero.jpg",
+    bg: "#1f2667",
+  },
+];
+
 // Personal projects — the "Built in the open" grid.
 // Cards work two ways:
 //  • "plain"     → bg color + title/tags, optional centered icon (no assets needed)
@@ -306,6 +333,38 @@ function renderCard(p: Project, index: number, mini = false) {
   );
 }
 
+function RunningCard({ project, index }: { project: RunningProject; index: number }) {
+  return (
+    <a
+      href={project.href}
+      className={`${styles.projectCard} ${styles.runningCard}`}
+      style={{ animationDelay: `${index * 0.1}s`, background: project.bg }}
+    >
+      <div className={styles.runningInfo}>
+        <div className={styles.runningHead}>
+          <Image src={project.icon} alt="" width={40} height={40} className={styles.runningIcon} />
+          <span className={styles.runningStatus}>
+            <span className={styles.runningDot} />
+            {project.status}
+          </span>
+        </div>
+        <span className={styles.runningTitle}>{project.title}</span>
+        <p className={styles.runningBlurb}>{project.blurb}</p>
+        <span className={styles.runningTags}>{project.tags}</span>
+      </div>
+      <div className={styles.runningShot}>
+        <Image
+          src={project.shot}
+          alt={`${project.title} screenshot`}
+          fill
+          sizes="(max-width: 960px) 100vw, 640px"
+          className={styles.runningShotImage}
+        />
+      </div>
+    </a>
+  );
+}
+
 // ── Page ──────────────────────────────────────────────────────────────────────
 
 export default function Portfolio() {
@@ -341,6 +400,19 @@ export default function Portfolio() {
           </div>
         </section>
 
+        {/* Work in progress */}
+        <section>
+          <div className={styles.sectionHeader}>
+            <h2 className={styles.infoLabel}>Building now</h2>
+            <span className={styles.sectionNote}>in progress, shipping in betas</span>
+          </div>
+          <div className={styles.runningList}>
+            {runningProjects.map((p, i) => (
+              <RunningCard key={p.title} project={p} index={projects.length + i} />
+            ))}
+          </div>
+        </section>
+
         {/* Personal projects */}
         <section>
           <div className={styles.sectionHeader}>
@@ -348,7 +420,7 @@ export default function Portfolio() {
             <span className={styles.sectionNote}>packages &amp; experiments</span>
           </div>
           <div className={styles.workGrid}>
-            {sideProjects.map((p, i) => renderCard(p, projects.length + i, true))}
+            {sideProjects.map((p, i) => renderCard(p, projects.length + runningProjects.length + i, true))}
           </div>
         </section>
 

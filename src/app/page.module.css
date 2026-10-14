@@ -569,6 +569,122 @@
   flex-shrink: 0;
 }
 
+/* Building now: one wide card per project, text left and screenshot right */
+.runningList {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.runningCard {
+  display: grid;
+  grid-template-columns: 5fr 7fr;
+  align-items: stretch;
+  margin-bottom: 0;
+  border-radius: 8px;
+  overflow: hidden;
+  transition: box-shadow 0.3s ease;
+}
+
+.runningCard:hover {
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.18);
+}
+
+.runningInfo {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 28px 28px 26px;
+  color: #fff;
+}
+
+.runningHead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 4px;
+}
+
+.runningIcon {
+  width: 40px;
+  height: 40px;
+}
+
+.runningStatus {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 5px 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.runningDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #6ff5c8;
+  animation: runningPulse 2s ease-out infinite;
+}
+
+@keyframes runningPulse {
+  0% { box-shadow: 0 0 0 0 rgba(111, 245, 200, 0.6); }
+  70% { box-shadow: 0 0 0 7px rgba(111, 245, 200, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(111, 245, 200, 0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .runningDot { animation: none; }
+}
+
+.runningTitle {
+  font-size: 22px;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+}
+
+.runningBlurb {
+  font-size: 13px;
+  font-weight: 300;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.8);
+  max-width: 40ch;
+}
+
+.runningTags {
+  margin-top: auto;
+  padding-top: 8px;
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+/* The screenshot bleeds off the card's right and bottom edges */
+.runningShot {
+  position: relative;
+  min-height: 260px;
+  margin: 28px 0 0;
+  border-top-left-radius: 8px;
+  overflow: hidden;
+  box-shadow: -8px -8px 32px rgba(0, 0, 0, 0.25);
+}
+
+.runningShotImage {
+  object-fit: cover;
+  object-position: left top;
+  transition: transform 0.4s ease;
+}
+
+.runningCard:hover .runningShotImage {
+  transform: scale(1.02);
+}
+
 /* ── Footer ────────────────────────────────────────────────────────────────── */
 
 .footer {
@@ -777,6 +893,16 @@
   .infoGrid {
     grid-template-columns: 1fr;
     gap: 40px;
+  }
+
+  .runningCard {
+    grid-template-columns: 1fr;
+  }
+
+  .runningShot {
+    min-height: 0;
+    aspect-ratio: 16 / 9;
+    margin: 0 0 0 28px;
   }
 }
 
