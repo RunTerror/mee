@@ -1,0 +1,590 @@
+/* Same palette as the homepage: cream page, black text.
+   One centred reading column; code pairs, tables and the hero run wider. */
+.page {
+  --ink: #1a1a1a;
+  --body: #2e2e2e;
+  --muted: rgba(26, 26, 26, 0.6);
+  --hair: rgba(26, 26, 26, 0.12);
+  --paper: #f4f1eb;
+  --paper-deep: #ebe7df;
+  --column: 860px;
+  --wide: 960px;
+
+  background: var(--paper);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.header,
+.main,
+.footer {
+  width: 100%;
+  max-width: calc(var(--wide) + 96px);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 48px;
+  padding-right: 48px;
+}
+
+/* ── Header ────────────────────────────────────────────────────────────────── */
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 34px;
+  padding-bottom: 22px;
+}
+
+.headerName {
+  font-size: 15px;
+  color: var(--ink);
+  letter-spacing: 0.01em;
+}
+
+.nav {
+  display: flex;
+  gap: 32px;
+}
+
+.nav a {
+  font-size: 15px;
+  color: var(--ink);
+  transition: opacity 0.15s;
+}
+
+.nav a:hover {
+  opacity: 0.45;
+}
+
+/* ── Main column ──────────────────────────────────────────────────────────── */
+
+.main {
+  flex: 1;
+  padding-top: 48px;
+  padding-bottom: 72px;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 96px;
+}
+
+/* ── Hero ─────────────────────────────────────────────────────────────────── */
+
+.hero {
+  width: 100%;
+  max-width: var(--wide);
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 64px;
+  align-items: center;
+}
+
+.heroMedia .figureRow {
+  margin: 0;
+}
+
+.label {
+  display: block;
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 24px;
+}
+
+.title {
+  font-size: clamp(28px, 3.2vw, 40px);
+  font-weight: 400;
+  line-height: 1.08;
+  letter-spacing: -0.025em;
+  color: var(--ink);
+  margin-bottom: 18px;
+}
+
+.subtitle {
+  font-size: clamp(15px, 1.3vw, 17px);
+  line-height: 1.45;
+  color: var(--muted);
+  margin-bottom: 32px;
+  max-width: 34em;
+}
+
+.intro {
+  font-size: 14.5px;
+  line-height: 1.7;
+  color: var(--body);
+  margin-bottom: 16px;
+  max-width: 38em;
+}
+
+.meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px 48px;
+  margin-top: 32px;
+  padding-top: 20px;
+  border-top: 1px solid var(--hair);
+}
+
+.metaItem {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.metaLabel {
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.metaValue {
+  font-size: 13px;
+  color: var(--ink);
+}
+
+/* ── Sections ─────────────────────────────────────────────────────────────── */
+
+.section {
+  width: 100%;
+  max-width: var(--column);
+}
+
+/* "01  THE FIELD ───────" */
+.eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--ink);
+  margin-bottom: 18px;
+}
+
+.eyebrow::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: var(--hair);
+}
+
+.eyebrowNum {
+  font-family: var(--font-mono), monospace;
+  color: var(--muted);
+}
+
+.heading {
+  font-size: clamp(20px, 2vw, 24px);
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: -0.015em;
+  color: var(--ink);
+  margin-bottom: 20px;
+}
+
+.subheading {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 1.4;
+  color: var(--ink);
+  margin: 40px 0 12px;
+}
+
+.subheading span {
+  font-family: var(--font-mono), monospace;
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--muted);
+}
+
+.sectionText {
+  font-size: 14.5px;
+  line-height: 1.7;
+  color: var(--body);
+  margin-bottom: 18px;
+}
+
+.sectionList {
+  font-size: 14.5px;
+  line-height: 1.7;
+  color: var(--body);
+  margin: 8px 0 24px;
+  padding-left: 0;
+  list-style-position: outside;
+}
+
+.sectionList li {
+  margin-bottom: 10px;
+}
+
+.sectionList strong,
+.sectionText strong,
+.steps strong {
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.sectionText a,
+.metaValue a {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.mono {
+  font-family: var(--font-mono), monospace;
+  font-size: 0.85em;
+  background: rgba(26, 26, 26, 0.06);
+  padding: 1px 5px;
+  border-radius: 4px;
+}
+
+.note {
+  font-size: 13.5px;
+  line-height: 1.65;
+  color: var(--muted);
+  margin-top: 28px;
+}
+
+.sectionList li::marker,
+.steps li::marker {
+  color: var(--muted);
+  font-family: var(--font-mono), monospace;
+  font-size: 0.9em;
+}
+
+/* ── Code ─────────────────────────────────────────────────────────────────── */
+
+.codeBlock {
+  font-family: var(--font-mono), monospace;
+  font-size: 13px;
+  line-height: 1.6;
+  background: var(--paper-deep);
+  color: var(--ink);
+  border: 1px solid rgba(26, 26, 26, 0.08);
+  border-radius: 10px;
+  padding: 20px 22px;
+  margin: 0;
+  overflow-x: auto;
+  white-space: pre;
+}
+
+/* Two code blocks side by side, breaking out of the column to the wide width */
+.codePair {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  width: min(var(--wide), calc(100vw - 96px));
+  margin: 28px 0;
+}
+
+.codePair > div {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.codePair .codeBlock {
+  flex: 1;
+}
+
+.codeLabel {
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 10px;
+}
+
+.details {
+  margin: 8px 0 28px;
+}
+
+.details summary {
+  cursor: pointer;
+  font-size: 14px;
+  color: var(--ink);
+  margin-bottom: 14px;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-color: var(--hair);
+}
+
+.details summary:hover {
+  text-decoration-color: var(--ink);
+}
+
+/* ── Pull quote and stats ─────────────────────────────────────────────────── */
+
+.pullQuote {
+  font-size: clamp(18px, 1.8vw, 20px);
+  line-height: 1.4;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+  margin: 32px 0;
+  padding: 20px 0;
+  border-top: 1px solid var(--ink);
+  border-bottom: 1px solid var(--hair);
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+  margin: 32px 0;
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 22px 24px;
+  border: 1px solid var(--hair);
+  border-radius: 12px;
+}
+
+.statValue {
+  font-size: clamp(26px, 2.6vw, 32px);
+  line-height: 1;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+}
+
+.statLabel {
+  font-size: 13px;
+  line-height: 1.45;
+  color: var(--muted);
+}
+
+/* ── Tables ───────────────────────────────────────────────────────────────── */
+
+.tableWrap {
+  overflow-x: auto;
+  margin: 24px 0 28px;
+}
+
+.compareTable {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.compareTable th,
+.compareTable td {
+  text-align: left;
+  vertical-align: top;
+  padding: 12px 18px 12px 0;
+  border-bottom: 1px solid var(--hair);
+  color: var(--body);
+}
+
+.compareTable th {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink);
+}
+
+.compareTable td:first-child {
+  color: var(--muted);
+  white-space: nowrap;
+}
+
+/* ── Flow diagram ─────────────────────────────────────────────────────────── */
+
+.flow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  margin: 24px 0 8px;
+  font-size: 14px;
+}
+
+.flowStep {
+  border: 1px solid var(--ink);
+  border-radius: 10px;
+  padding: 10px 14px;
+  line-height: 1.4;
+  background: var(--paper);
+}
+
+.flowStep small {
+  display: block;
+  font-size: 11px;
+  color: var(--muted);
+}
+
+.flowArrow {
+  color: var(--muted);
+}
+
+/* ── Numbered steps ───────────────────────────────────────────────────────── */
+
+.steps {
+  list-style: decimal outside;
+  padding-left: 0;
+  margin: 8px 0 28px;
+}
+
+.steps li {
+  margin-bottom: 16px;
+  font-size: 14.5px;
+  line-height: 1.7;
+  color: var(--body);
+}
+
+
+/* ── Screenshots and recordings ───────────────────────────────────────────── */
+
+.figureRow {
+  display: flex;
+  justify-content: flex-start;
+  gap: 28px;
+  margin: 36px 0;
+  overflow-x: auto;
+  padding-bottom: 4px;
+}
+
+.figure {
+  flex-shrink: 0;
+  width: 250px;
+  margin: 0;
+}
+
+.shotFrame,
+.gifFrame {
+  display: block;
+  position: relative;
+  width: 100%;
+  border-radius: 22px;
+  overflow: hidden;
+  border: 1px solid var(--hair);
+  box-shadow: 0 18px 40px -24px rgba(26, 26, 26, 0.35);
+  cursor: zoom-in;
+  padding: 0;
+  transition: transform 0.2s ease;
+}
+
+.shotFrame:hover,
+.gifFrame:hover {
+  transform: translateY(-2px);
+}
+
+.shotFrame {
+  aspect-ratio: 1260 / 2736;
+  background: #fff;
+}
+
+.gifFrame {
+  aspect-ratio: 360 / 790;
+  background: #fff;
+}
+
+.shotImage {
+  object-fit: cover;
+}
+
+.figcaption {
+  margin-top: 12px;
+  font-size: 13px;
+  line-height: 1.45;
+  color: var(--muted);
+  text-align: center;
+}
+
+/* ── Call to action ───────────────────────────────────────────────────────── */
+
+.ctaButton {
+  display: inline-block;
+  margin-top: 8px;
+  padding: 13px 30px;
+  border: 1px solid var(--ink);
+  color: var(--ink);
+  font-size: 15px;
+  border-radius: 999px;
+  transition: background 0.2s, color 0.2s;
+}
+
+.ctaButton:hover {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+/* ── Footer ───────────────────────────────────────────────────────────────── */
+
+.footer {
+  padding-top: 20px;
+  padding-bottom: 28px;
+  text-align: center;
+}
+
+.footerName {
+  font-size: 13px;
+  color: var(--ink);
+}
+
+/* ── Responsive ───────────────────────────────────────────────────────────── */
+
+@media (max-width: 860px) {
+  .hero {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .heroMedia {
+    justify-self: center;
+  }
+
+  .codePair {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .header,
+  .main,
+  .footer {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .main {
+    padding-top: 28px;
+    gap: 64px;
+  }
+
+  .codePair {
+    width: 100%;
+  }
+
+  .figureRow {
+    justify-content: flex-start;
+    gap: 16px;
+  }
+
+  .figure {
+    width: 180px;
+  }
+
+  .sectionText,
+  .sectionList,
+  .steps li,
+  .intro {
+    font-size: 14px;
+  }
+
+  .codeBlock {
+    font-size: 12px;
+    padding: 16px;
+  }
+}

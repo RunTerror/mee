@@ -36,7 +36,7 @@ const experiences = [
   },
   {
     org: "Merlin AI",
-    role: "Mobile Lead, driving product experience",
+    role: "Driving product experience",
     year: "2024-25",
     href: "https://www.getmerlin.in",
   },
@@ -170,20 +170,19 @@ const runningProjects: RunningProject[] = [
 const sideProjects: Project[] = [
   {
     type: "plain",
+    bg: "#dde3ef",
+    icon: "/prism/icon.svg",
+    title: "Prism: Native Generative UI",
+    tags: "OPEN SOURCE SDK • 2026",
+    href: "/generative-ui",
+  },
+  {
+    type: "plain",
     bg: "#dcd9ec",
     icon: "/steady/icon.svg",
     title: "Steady: Jump-free Chat Scrolling",
     tags: "SWIFT PACKAGE • 2026",
     href: "/steady",
-  },
-  {
-    type: "plain",
-    bg: "#ece3cf",
-    icon: "/typewriter/icon.png",
-    title: "Typewriter: Write Without Delete",
-    tags: "iOS APP • 2026",
-    href: "/typewriter",
-    iconStyle: { borderRadius: "22px" },
   },
   {
     type: "plain",
@@ -385,7 +384,7 @@ export default function Portfolio() {
       <main className={styles.main}>
         <section className={styles.hero}>
           <h1 className={styles.headline}>
-            I make mobile apps people don’t delete. Built to scale. Built to help.
+            I build mobile apps people keep, and the tools I wish I’d had while building them.
           </h1>
         </section>
 

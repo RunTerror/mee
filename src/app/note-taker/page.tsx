@@ -68,7 +68,7 @@ export default function NotesAIPage() {
             </div>
             <div className={styles.metaItem}>
               <span className={styles.metaLabel}>ROLE</span>
-              <span className={styles.metaValue}>Mobile Lead &bull; Flutter</span>
+              <span className={styles.metaValue}>Mobile &bull; Flutter</span>
             </div>
           </div>
         </div>

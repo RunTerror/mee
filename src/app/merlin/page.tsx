@@ -38,7 +38,7 @@ export default function MerlinPage() {
         </header>
 
         <div className={styles.sidebarContent}>
-          <span className={styles.projectLabel}>MOBILE LEAD &bull; PRODUCT</span>
+          <span className={styles.projectLabel}>MOBILE &bull; PRODUCT</span>
 
           <h1 className={styles.projectTitle}>
             One app, every AI model — making intelligence accessible to everyone
@@ -47,7 +47,7 @@ export default function MerlinPage() {
           <div className={styles.overview}>
             <h2 className={styles.overviewLabel}>WORK OVERVIEW</h2>
             <p className={styles.overviewText}>
-              As Mobile Lead at Merlin AI, I transformed an existing Flutter codebase into a stable, polished product for hundreds of thousands of daily users:
+              At Merlin AI, I transformed an existing Flutter codebase into a stable, polished product for hundreds of thousands of daily users:
             </p>
             <ul className={styles.overviewList}>
               <li className={styles.overviewListItem}>Resolving critical platform bugs & reducing crash rates</li>
@@ -68,7 +68,7 @@ export default function MerlinPage() {
             </div>
             <div className={styles.metaItem}>
               <span className={styles.metaLabel}>ROLE</span>
-              <span className={styles.metaValue}>Mobile Lead &bull; Flutter</span>
+              <span className={styles.metaValue}>Mobile &bull; Flutter</span>
             </div>
           </div>
         </div>

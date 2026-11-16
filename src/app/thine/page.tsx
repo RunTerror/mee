@@ -33,7 +33,7 @@ export default function ThinePage() {
         </header>
 
         <div className={styles.sidebarContent}>
-          <span className={styles.projectLabel}>FOUNDING MEMBER &bull; MOBILE LEAD</span>
+          <span className={styles.projectLabel}>FOUNDING MEMBER</span>
 
           <h1 className={styles.projectTitle}>
             Building a personal AI that understands you, not just your queries
@@ -69,7 +69,7 @@ export default function ThinePage() {
             </div>
             <div className={styles.metaItem}>
               <span className={styles.metaLabel}>ROLE</span>
-              <span className={styles.metaValue}>Mobile Lead &bull; SwiftUI</span>
+              <span className={styles.metaValue}>Founding Member &bull; SwiftUI</span>
             </div>
           </div>
         </div>
