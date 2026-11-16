@@ -26,7 +26,7 @@ export default function ThinePage() {
         <header className={styles.sidebarHeader}>
           <a href="/" className={styles.name}>Abhishek Bansal</a>
           <nav className={styles.nav}>
-            {/* <a href="#">resume</a> */}
+            <a href="/Abhishek_Bansal_Resume.pdf" target="_blank" rel="noopener noreferrer">resume</a>
             <a href="mailto:bansalabhishek7411@gmail.com">contact</a>
             <a href="https://apps.apple.com/in/app/thine-ai/id6757556695" target="_blank" rel="noopener noreferrer" aria-label="App Store" className={styles.navIcon}><AppleIcon /></a>
           </nav>

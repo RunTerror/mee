@@ -375,7 +375,7 @@ export default function Portfolio() {
           Abhishek Bansal
         </a>
         <nav className={styles.nav}>
-          {/* <a href="#">resume</a> */}
+          <a href="/Abhishek_Bansal_Resume.pdf" target="_blank" rel="noopener noreferrer">resume</a>
           <a href="mailto:bansalabhishek7411@gmail.com">contact</a>
         </nav>
       </header>

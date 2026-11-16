@@ -165,6 +165,7 @@ export default function GenerativeUiPage() {
       <header className={styles.header}>
         <a href="/" className={styles.headerName}>Abhishek Bansal</a>
         <nav className={styles.nav}>
+          <a href="/Abhishek_Bansal_Resume.pdf" target="_blank" rel="noopener noreferrer">resume</a>
           <a href="mailto:bansalabhishek7411@gmail.com">contact</a>
         </nav>
       </header>
